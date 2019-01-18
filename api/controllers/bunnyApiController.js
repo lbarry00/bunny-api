@@ -49,20 +49,14 @@ exports.get_all_bunnies = function(req, res) {
 }
 
 exports.add_a_bunny = function(req, res) {
-	var url = req.body.img;
-  	Bunny.find({ img: url }, function(err, bunny) {
-  	if (bunny.length > 0) {
-  		res.json({success: false, error: "Bunny already exists in database"});
-  	} else {
-  		var new_bunny = new Bunny(req.body);
-	    new_bunny.save(function(err, bunny) {
-	    if (err) {
-	      res.send(err);
-	    }
-	    res.json({ success: true });
-	  });
-  	}
-  }); 
+    var new_bunny = new Bunny(req.body);
+    new_bunny.save(function(err, bunny) {
+    if (err) {
+      res.json({ success: false, error: "Duplicate, bunny already in database" })
+    } else {
+      res.json({ success: true });
+    }
+  });
 }
 
 exports.get_a_bunny = function(req, res) {
