@@ -14,4 +14,7 @@ module.exports = function(app) {
 
   app.route(apiRoute + "/list")
     .get(bunnies.get_all_bunnies);
+
+  app.route(apiRoute + "/count")
+    .get(bunnies.count_bunnies);
 };
