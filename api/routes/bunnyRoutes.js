@@ -8,8 +8,7 @@ module.exports = function(app) {
     .get(bunnies.get_random_bunny)
     .post(bunnies.add_a_bunny);
 
-  app.route(apiRoute + "/bunnies/:id")
-    .get(bunnies.get_a_bunny)
+  app.route(apiRoute + "/bunnies/:img")
     .delete(bunnies.delete_a_bunny);
 
   app.route(apiRoute + "/list")

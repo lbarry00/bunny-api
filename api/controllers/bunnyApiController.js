@@ -59,42 +59,21 @@ exports.add_a_bunny = function(req, res) {
   });
 }
 
-exports.get_a_bunny = function(req, res) {
-	Bunny.findById(req.params.id, function(err, bunny) {
-	if (err) {
-	  res.json(
-	    {
-	      success: false,
-	      error: "Error finding bunny with ID: " + req.params.id
-	    }
-	  );
-	} else {
-	  res.json(
-	    {
-	      success: true,
-	      bunny
-	    }
-	  );
-	}
-	});
-};
-
 exports.delete_a_bunny = function(req, res) {
 	Bunny.remove({
-	_id: req.params.id
+	img: req.params.img
 	}, function(err, bunny) {
 	if (err) {
 	  res.json(
 	    {
 	      success: false,
-	      error: "Could not delete bunny with ID: " + req.params.id
+	      error: "Could not delete bunny with URL: " + req.params.img
 	    }
 	  );
 	} else {
 	  res.json(
 	    {
-	      success: true,
-	      bunny
+	      success: true
 	    }
 	  );
 	}
